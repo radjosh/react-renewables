@@ -4,7 +4,7 @@ import { Container, Typography, Box, Paper } from "@mui/material"
 
 
 function App() {
-  const ENDPOINT = "http://localhost:8080/first"
+  const ENDPOINT = "http://localhost:8080/getData"
   const [ results, setResults ] = React.useState([]);
   const [ foo, setFoo ] = React.useState("");
 
@@ -16,7 +16,8 @@ function App() {
       method: "GET"
     });
     const json = await response.json();
-    setResult(() => json);
+    console.log(json);
+    setResults(() => json);
   }
 
   return (
@@ -33,6 +34,13 @@ function App() {
           />
         </form>
       </Box>
+        { Object.values(results)?.map(result => (
+        <Paper elevation={4} sx={{ p: 2}} key={crypto.randomUUID()}>
+          <Typography variant="h6" sx={{ p: 1 }}>{ result.Country }</Typography>
+          <Typography>{ result.Year }</Typography>
+          <Typography>{ result.EnergyType }</Typography>
+        </Paper>
+        ))}
     </Container>
   )
 }
