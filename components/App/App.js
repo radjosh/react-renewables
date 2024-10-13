@@ -1,17 +1,26 @@
 import React from "react";
-import { Container, Typography, Box, Paper } from "@mui/material"
+import { Container, Typography, Paper, Button } from "@mui/material";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 
 
 function App() {
-  const ENDPOINT = "http://localhost:8080/getData"
+  const ENDPOINT = "http://localhost:8080/query"
   const [ results, setResults ] = React.useState([]);
-  const [ foo, setFoo ] = React.useState("");
+  const theme = createTheme({
+    palette: {
+      primary: {
+        main: '#283618',
+      },
+      secondary: {
+        main: '#606c38',
+      },
+    },
+  });
 
   async function handleSubmit(event) {
     event.preventDefault();
     const url = new URL(ENDPOINT);
-    url.searchParams.append("foo", foo);
     const response = await fetch(url, {
       method: "GET"
     });
@@ -21,26 +30,23 @@ function App() {
   }
 
   return (
-    <Container sx={{ bgcolor: 'lightgreen', height: '100vh'}}>
-      <Box sx={{ p: 8 }}>
-        <form onSubmit={handleSubmit}>
-          <input
-            type="text"
-            autoFocus
-            value={foo}
-            onChange={(event) => {
-              setFoo(() => event.target.value);
-            }}
-          />
-        </form>
-      </Box>
-        { Object.values(results)?.map(result => (
-        <Paper elevation={4} sx={{ p: 2}} key={crypto.randomUUID()}>
-          <Typography variant="h6" sx={{ p: 1 }}>{ result.Country }</Typography>
-          <Typography>{ result.Year }</Typography>
-          <Typography>{ result.EnergyType }</Typography>
-        </Paper>
-        ))}
+
+// 606c38
+// 283618
+// fefae0
+
+    <Container sx={{ height: '100vh' }}>
+      <ThemeProvider theme={theme}>
+        <Button variant="contained" color="secondary" onClick={handleSubmit}>get data</Button>
+      </ThemeProvider>
+
+      { Object.values(results)?.map(result => (
+      <Paper elevation={4} sx={{ bgcolor: 'beige' }} key={crypto.randomUUID()}>
+        <Typography variant="h6">{ result.Country }</Typography>
+        <Typography>{ result.Year }</Typography>
+        <Typography>{ result.EnergyType }</Typography>
+      </Paper>
+      ))}
     </Container>
   )
 }
