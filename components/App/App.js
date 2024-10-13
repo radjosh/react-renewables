@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Typography, Paper, Button } from "@mui/material";
+import { Container, Box, Typography, Paper, Button } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 
@@ -42,9 +42,11 @@ function App() {
 
       { Object.values(results)?.map(result => (
       <Paper elevation={4} sx={{ bgcolor: 'beige' }} key={crypto.randomUUID()}>
+        <Box sx={{ m: 1 }}>
         <Typography variant="h6">{ result.Country }</Typography>
         <Typography>{ result.Year }</Typography>
         <Typography>{ result.EnergyType }</Typography>
+        </Box>
       </Paper>
       ))}
     </Container>
