@@ -1,6 +1,5 @@
 import React from "react";
-import { Container, Card, Box, Typography, Paper, Button } from "@mui/material";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { Container, Box, Typography, Paper, Button } from "@mui/material";
 
 function App() {
   const ENDPOINT = "http://localhost:8080/query"
@@ -33,7 +32,6 @@ function App() {
       { Object.values(results)?.map(result => (
         <Paper elevation={3}>
           <Box sx={{ 
-            borderRadius: 8,
             flex: "1 1 calc(33.33% - 16px)",
             minWidth: '300px',
             p: 1,
