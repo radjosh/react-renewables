@@ -1,20 +1,10 @@
 import React from "react";
-import { Container, Box, Typography, Paper, Button } from "@mui/material";
+import { Container, Card, Box, Typography, Paper, Button } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 function App() {
   const ENDPOINT = "http://localhost:8080/query"
   const [ results, setResults ] = React.useState([]);
-  const theme = createTheme({
-    palette: {
-      primary: {
-        main: '#283618',
-      },
-      secondary: {
-        main: '#606c38',
-      },
-    },
-  });
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -29,24 +19,30 @@ function App() {
 
   return (
 
-// 606c38
-// 283618
-// fefae0
-
     <Container sx={{ height: '100vh' }}>
-      <ThemeProvider theme={theme}>
-        <Button variant="contained" color="secondary" onClick={handleSubmit}>get data</Button>
-      </ThemeProvider>
+        <Button variant="contained" color="primary" sx={{ my: 2}}onClick={handleSubmit}>get data</Button>
 
+    <Box sx={{ 
+      display: "flex",
+      flexWrap: "wrap",
+      flexDirection: { xs: "column", md: "row" },
+      justifyContent: "space-around",
+      gap: 4,
+      }} 
+    >
       { Object.values(results)?.map(result => (
-      <Paper elevation={4} sx={{ bgcolor: 'beige' }} key={crypto.randomUUID()}>
-        <Box sx={{ m: 1 }}>
-        <Typography variant="h6">{ result.Country }</Typography>
-        <Typography>{ result.Year }</Typography>
-        <Typography>{ result.EnergyType }</Typography>
-        </Box>
-      </Paper>
-      ))}
+        <Paper elevation={3}>
+          <Box sx={{ 
+            borderRadius: 8,
+            flex: "1 1 calc(33.33% - 16px)",
+            minWidth: '300px',
+            p: 1,
+          }} >
+          <Typography sx={{ textAlign: 'left' }}>{ result.Country }{" "}{ result.Year }{" "}{ result.EnergyType }</Typography>
+          </Box>
+        </Paper>
+     ))}
+    </Box>
     </Container>
   )
 }
