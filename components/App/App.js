@@ -2,8 +2,6 @@ import React from "react";
 import { Container, Box, Typography, Paper, Button } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
-
-
 function App() {
   const ENDPOINT = "http://localhost:8080/query"
   const [ results, setResults ] = React.useState([]);
