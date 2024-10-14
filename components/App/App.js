@@ -40,7 +40,12 @@ function App() {
             bgcolor: 'beige',
           }} >
           <Typography variant="h6" sx={{ textAlign: 'left' }}>{ result.Country }{" "}{ result.Year }{" "}{ result.EnergyType }</Typography>
-          <Typography sx={{ textAlign: 'left', fontSize: 'xx-small'}}>ProductionGWh: { result.ProductionGWh }</Typography>
+          { Object.entries(result).map(([k, v]) => 
+          <Typography key={crypto.randomUUID} sx={{ textAlign: 'left', fontSize: 'xx-small'}}>
+            {k}: {v}
+          </Typography>
+          )}
+          {/* <Typography sx={{ textAlign: 'left', fontSize: 'xx-small'}}>ProductionGWh: { result.ProductionGWh }</Typography>
           <Typography sx={{ textAlign: 'left', fontSize: 'xx-small'}}>InstalledCapacityMW: { result.InstalledCapacityMW }</Typography>
           <Typography sx={{ textAlign: 'left', fontSize: 'xx-small'}}>InvestmentsUSD: { result.InvestmentsUSD }</Typography>
           <Typography sx={{ textAlign: 'left', fontSize: 'xx-small'}}>Population: { result.Population }</Typography>
@@ -92,7 +97,7 @@ function App() {
           <Typography sx={{ textAlign: 'left', fontSize: 'xx-small'}}>EnergySectorWorkforce: { result.EnergySectorWorkforce }</Typography>
           <Typography sx={{ textAlign: 'left', fontSize: 'xx-small'}}>ProportionOfEnergyFromRenewables: { result.ProportionOfEnergyFromRenewables }</Typography>
           <Typography sx={{ textAlign: 'left', fontSize: 'xx-small'}}>PublicPrivatePartnershipsInEnergy: { result.PublicPrivatePartnershipsInEnergy }</Typography>
-          <Typography sx={{ textAlign: 'left', fontSize: 'xx-small'}}>RegionalRenewableEnergyCooperation: { result.RegionalRenewableEnergyCooperation }</Typography>
+          <Typography sx={{ textAlign: 'left', fontSize: 'xx-small'}}>RegionalRenewableEnergyCooperation: { result.RegionalRenewableEnergyCooperation }</Typography> */}
           </Box>
         </Paper>
      ))}
