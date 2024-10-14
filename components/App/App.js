@@ -43,7 +43,7 @@ function App() {
           }} >
           <Typography variant="h6" sx={{ textAlign: 'left' }}>{ result.Country }{" "}{ result.Year }{" "}{ result.EnergyType }</Typography>
           { Object.entries(result).map(([k, v]) => 
-            <Typography key={crypto.randomUUID} sx={{ textAlign: 'left', fontSize: 'xx-small'}}>
+            <Typography key={`${k}-${v}`} sx={{ textAlign: 'left', fontSize: 'xx-small'}}>
               {k}: {v}
             </Typography>
           )}
