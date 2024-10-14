@@ -12,7 +12,6 @@ function App() {
       method: "GET"
     });
     const json = await response.json();
-    console.log(json);
     setResults(() => json);
   }
 
@@ -42,12 +41,12 @@ function App() {
           <Typography variant="h6" sx={{ textAlign: 'left' }}>{ result.Country }{" "}{ result.Year }{" "}{ result.EnergyType }</Typography>
           { Object.entries(result).map(([k, v]) => {
             if (k != "Country" && k != "Year" && k != "EnergyType") {
-            return (
-            <Typography key={`${k}-${v}`} sx={{ textAlign: 'left', fontSize: 'xx-small'}}>
-              {k}: {v}
-            </Typography>
-            );}
-            return null; // when if condition is false
+              return (
+                <Typography key={`${k}-${v}`} sx={{ textAlign: 'left', fontSize: 'xx-small'}}>
+                  {k}: {v}
+                </Typography>
+              );}
+              return null; // when if condition is false
           })}
           </Box>
         </Paper>
