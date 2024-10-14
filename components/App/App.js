@@ -24,7 +24,7 @@ function App() {
     <Box sx={{ 
       display: "flex",
       flexWrap: "wrap",
-      flexDirection: { xs: "column", md: "row" },
+      flexDirection: { xs: "column", sm: "row" },
       justifyContent: "space-around",
       gap: 4,
       }} 
